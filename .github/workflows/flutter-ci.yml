@@ -1,0 +1,46 @@
+name: RASA Flutter CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  android:
+    name: Analyze, test, and build Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.50.1'
+          cache: true
+
+      # The repository initially contains Dart source only. Generate the
+      # Android host project in the CI workspace so the APK can be verified.
+      - name: Generate Android platform files
+        run: flutter create . --platforms=android --org com.satishtiwari1126 --project-name rasa
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Format Dart source
+        run: dart format .
+
+      - name: Analyze Dart source
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build debug APK
+        run: flutter build apk --debug
