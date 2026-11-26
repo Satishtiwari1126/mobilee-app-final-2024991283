@@ -26,6 +26,7 @@ RASA is a Flutter recipe discovery app. Browse meal categories, search for dishe
 ## Optional extensions implemented
 - Surprise-me button that opens a random recipe
 - Korean menu screen with the dishes and prices provided by the student
+- Tappable Korean menu dishes with suggested recipes and links to recipe references
 
 ## Run locally
 1. Install Flutter and Android Studio or configure an iOS simulator.
