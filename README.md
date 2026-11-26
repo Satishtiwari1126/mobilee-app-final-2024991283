@@ -18,9 +18,13 @@ RASA is a Flutter recipe discovery app. Browse meal categories, search for dishe
 
 ## Technology
 - Flutter and Dart
+- Flutter version used for verification: 3.50.1
 - TheMealDB public API: https://www.themealdb.com/api.php
 - http for network requests
 - shared_preferences for local favorites
+
+## Optional extensions implemented
+- Surprise-me button that opens a random recipe
 
 ## Run locally
 1. Install Flutter and Android Studio or configure an iOS simulator.

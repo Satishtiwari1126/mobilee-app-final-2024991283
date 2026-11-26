@@ -43,7 +43,14 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               }
               if (snapshot.hasError) {
                 return Center(
-                    child: Text('Could not load favorites. ${snapshot.error}'));
+                    child: Column(mainAxisSize: MainAxisSize.min, children: [
+                  const Text('Could not load favorites. Check your connection.',
+                      textAlign: TextAlign.center),
+                  const SizedBox(height: 8),
+                  FilledButton(
+                      onPressed: () => setState(() => future = load()),
+                      child: const Text('Retry')),
+                ]));
               }
               final meals = snapshot.data ?? [];
               if (meals.isEmpty) {

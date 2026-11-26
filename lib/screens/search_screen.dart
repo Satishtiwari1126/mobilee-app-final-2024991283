@@ -90,7 +90,15 @@ class _SearchScreenState extends State<SearchScreen> {
             child: loading
                 ? const Center(child: CircularProgressIndicator())
                 : error != null
-                    ? Center(child: Text(error!))
+                    ? Center(
+                        child:
+                            Column(mainAxisSize: MainAxisSize.min, children: [
+                        Text(error!, textAlign: TextAlign.center),
+                        const SizedBox(height: 8),
+                        FilledButton(
+                            onPressed: () => search(controller.text),
+                            child: const Text('Retry')),
+                      ]))
                     : !searched
                         ? const Center(
                             child:
