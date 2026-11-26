@@ -28,16 +28,14 @@
 build/
 coverage/
 .flutter/
-*.lock
+
+# Keep pubspec.lock for reproducible application builds.
 
 # Android
 /android/local.properties
 /android/**/key.properties
-/android/**/gradle-wrapper.jar
 /android/.gradle/
 /android/captures/
-/android/gradlew
-/android/gradlew.bat
 
 # iOS
 /ios/Pods/
