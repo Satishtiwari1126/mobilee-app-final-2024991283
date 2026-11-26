@@ -33,7 +33,12 @@ class _HomeScreenState extends State<HomeScreen> {
     body: RefreshIndicator(onRefresh: refresh, child: FutureBuilder<List<Category>>(future: future, builder: (context, snapshot) {
       if (snapshot.connectionState == ConnectionState.waiting) return const Center(child: CircularProgressIndicator());
       if (snapshot.hasError) return ListView(children: [SizedBox(height: 220, child: Center(child: Column(mainAxisSize: MainAxisSize.min, children: [
-        const Text('Unable to load categories.'), const SizedBox(height: 8), FilledButton(onPressed: refresh, child: const Text('Retry'))]))]);
+        const Text('Unable to load categories.'),
+              const SizedBox(height: 8),
+              FilledButton(onPressed: refresh, child: const Text('Retry')),
+            ]),
+          )),
+        ]);
       final categories = snapshot.data ?? [];
       return ListView(padding: const EdgeInsets.all(16), children: [
         Text('The Essence of Every Flavor', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
