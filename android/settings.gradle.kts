@@ -8,7 +8,7 @@ pluginManagement {
             flutterSdkPath
         }
 
-    includeBuild("C:/Users/master/AppData/Local/Packages/openai.codex_2p2nqsd0c76g0/AC/#!sandbox.{911f00e5-0cdf-451c-b689-67a77c61dac0}/Temp/rasa-flutter-gradle-plugin")
+    includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
 
     repositories {
         google()
