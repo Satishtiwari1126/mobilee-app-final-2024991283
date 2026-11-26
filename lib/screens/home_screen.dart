@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(title: const Text('RASA', style: TextStyle(fontWeight: FontWeight.w900, letterSpacing: 2)),
-      actions: [IconButton(tooltip: 'Surprise me', onPressed: openRandom, icon: const Icon(Icons.casino_outlined))]),
+      actions: [IconButton(tooltip: 'About RASA', onPressed: () => showAboutDialog(context: context, applicationName: 'RASA', applicationVersion: '1.0.0', applicationIcon: const CircleAvatar(child: Icon(Icons.restaurant_menu)), children: const [Text('The Essence of Every Flavor'), SizedBox(height: 12), Text('Developed by: Tiwari Satish'), Text('Student ID: 2024991283'), SizedBox(height: 8), Text('A recipe discovery app for Mobile App Design (2026-2). Add your own profile photo before final submission.')]), icon: const Icon(Icons.info_outline)), IconButton(tooltip: 'Surprise me', onPressed: openRandom, icon: const Icon(Icons.casino_outlined))]),
     body: RefreshIndicator(onRefresh: refresh, child: FutureBuilder<List<Category>>(future: future, builder: (context, snapshot) {
       if (snapshot.connectionState == ConnectionState.waiting) return const Center(child: CircularProgressIndicator());
       if (snapshot.hasError) return ListView(children: [SizedBox(height: 220, child: Center(child: Column(mainAxisSize: MainAxisSize.min, children: [
