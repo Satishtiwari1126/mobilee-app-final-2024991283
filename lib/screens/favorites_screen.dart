@@ -1,3 +1,6 @@
+// The SDK deprecates this library but does not bundle its suggested replacement.
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import '../models/meal.dart';
 import '../services/meal_api.dart';
@@ -22,20 +25,51 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     }
     return meals;
   }
+
   late Future<List<Meal>> future = load();
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Your favorites'), actions: [IconButton(onPressed: () => setState(() => future = load()), icon: const Icon(Icons.refresh))]),
-    body: FutureBuilder<List<Meal>>(future: future, builder: (context, snapshot) {
-      if (snapshot.connectionState == ConnectionState.waiting) return const Center(child: CircularProgressIndicator());
-      if (snapshot.hasError) return Center(child: Text('Could not load favorites. ${snapshot.error}'));
-      final meals = snapshot.data ?? [];
-      if (meals.isEmpty) return const Center(child: Padding(padding: EdgeInsets.all(24), child: Text('No favorites yet. Tap the heart on a recipe to save it.', textAlign: TextAlign.center)));
-      return GridView.builder(padding: const EdgeInsets.all(12), itemCount: meals.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: .82, crossAxisSpacing: 10, mainAxisSpacing: 10),
-        itemBuilder: (context, i) => MealCard(meal: meals[i], onFavoriteChanged: () => setState(() => future = load()),
-          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => MealDetailScreen(meal: meals[i])))));
-    }),
-  );
+        appBar: AppBar(title: const Text('Your favorites'), actions: [
+          IconButton(
+              onPressed: () => setState(() => future = load()),
+              icon: const Icon(Icons.refresh))
+        ]),
+        body: FutureBuilder<List<Meal>>(
+            future: future,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (snapshot.hasError) {
+                return Center(
+                    child: Text('Could not load favorites. ${snapshot.error}'));
+              }
+              final meals = snapshot.data ?? [];
+              if (meals.isEmpty) {
+                return const Center(
+                    child: Padding(
+                        padding: EdgeInsets.all(24),
+                        child: Text(
+                            'No favorites yet. Tap the heart on a recipe to save it.',
+                            textAlign: TextAlign.center)));
+              }
+              return GridView.builder(
+                  padding: const EdgeInsets.all(12),
+                  itemCount: meals.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: .82,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10),
+                  itemBuilder: (context, i) => MealCard(
+                      meal: meals[i],
+                      onFavoriteChanged: () => setState(() => future = load()),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) =>
+                                  MealDetailScreen(meal: meals[i])))));
+            }),
+      );
 }

@@ -8,7 +8,8 @@ class FavoritesStorage {
     _prefs = await SharedPreferences.getInstance();
   }
 
-  static Set<String> getIds() => (_prefs?.getStringList(_key) ?? <String>[]).toSet();
+  static Set<String> getIds() =>
+      (_prefs?.getStringList(_key) ?? <String>[]).toSet();
 
   static Future<void> toggle(String id) async {
     final ids = getIds();

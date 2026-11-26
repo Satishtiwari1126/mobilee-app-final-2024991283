@@ -25,21 +25,22 @@ RASA is a Flutter recipe discovery app. Browse meal categories, search for dishe
 ## Run locally
 1. Install Flutter and Android Studio or configure an iOS simulator.
 2. Clone this repository.
-3. Open a terminal in the project root and run: flutter create .
-   This generates the native Android/iOS platform folders if they are not present.
-4. Run: flutter pub get
-5. Run: flutter run
+3. From the repository root, run `flutter pub get`.
+4. Run `flutter run`.
 
-For Android, ensure this permission is inside the manifest element in android/app/src/main/AndroidManifest.xml:
-<uses-permission android:name="android.permission.INTERNET" />
+The Android project is included in the repository. Its main manifest already grants internet access so recipe requests work on Android.
 
 ## Project structure
+```text
 lib/
   main.dart
   models/
   services/
   screens/
   widgets/
+android/
+test/
+```
 
 ## Screenshots
 Add at least three screenshots of the running application before submission:
@@ -50,7 +51,7 @@ Add at least three screenshots of the running application before submission:
 ## Personalization still to complete
 - Add your own profile photo to the About dialog or an About screen.
 - Capture and add at least three real screenshots of the running app.
-- Verify the project on your laptop with flutter pub get and flutter run.
+- Verify the project on your laptop with `flutter pub get` and `flutter run`.
 
 ## Notes
 The app requires an internet connection to retrieve recipes. TheMealDB is a third-party service and its availability may vary.
