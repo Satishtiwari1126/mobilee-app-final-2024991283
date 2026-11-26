@@ -30,6 +30,23 @@ jobs:
       - name: Generate Android platform files
         run: flutter create . --platforms=android --org com.satishtiwari1126 --project-name rasa
 
+      - name: Configure Android internet permission
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          manifest = Path('android/app/src/main/AndroidManifest.xml')
+          content = manifest.read_text()
+          permission = '<uses-permission android:name="android.permission.INTERNET" />'
+          if permission not in content:
+              content = content.replace('<manifest ', '<manifest ', 1)
+              marker = '<application'
+              content = content.replace(marker, f'    {permission}\\n    {marker}', 1)
+              manifest.write_text(content)
+          PY
+
+      - name: Remove generated placeholder test
+        run: rm -f test/widget_test.dart
+
       - name: Install dependencies
         run: flutter pub get
 
