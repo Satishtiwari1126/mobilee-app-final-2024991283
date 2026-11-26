@@ -40,7 +40,7 @@ jobs:
           if permission not in content:
               content = content.replace('<manifest ', '<manifest ', 1)
               marker = '<application'
-              content = content.replace(marker, f'    {permission}\\n    {marker}', 1)
+              content = content.replace(marker, f'    {permission}\n    {marker}', 1)
               manifest.write_text(content)
           PY
 
