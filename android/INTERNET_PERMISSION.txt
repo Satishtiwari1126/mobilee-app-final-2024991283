@@ -1,0 +1,5 @@
+Add this permission inside the <manifest> element of android/app/src/main/AndroidManifest.xml:
+
+<uses-permission android:name="android.permission.INTERNET" />
+
+The Flutter Android platform folder can be generated with: flutter create .
