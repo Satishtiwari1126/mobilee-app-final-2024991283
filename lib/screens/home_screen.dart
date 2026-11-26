@@ -7,6 +7,7 @@ import '../models/meal.dart';
 import '../services/meal_api.dart';
 import 'meal_list_screen.dart';
 import 'meal_detail_screen.dart';
+import 'korean_menu_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -119,6 +120,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style:
                                       TextStyle(fontWeight: FontWeight.w600)))
                         ])),
+                    const SizedBox(height: 12),
+                    Card(
+                        child: ListTile(
+                            leading: const CircleAvatar(
+                                backgroundColor: Color(0xFFF3E1D5),
+                                child: Icon(Icons.menu_book,
+                                    color: Color(0xFF8E432B))),
+                            title: const Text('Korean menu'),
+                            subtitle: const Text('8 dishes with prices'),
+                            trailing: const Icon(Icons.chevron_right),
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) =>
+                                        const KoreanMenuScreen())))),
                     const SizedBox(height: 22),
                     Text('Explore categories',
                         style: Theme.of(context)
